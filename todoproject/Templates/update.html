@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <title>Update Task</title>
+<div class="container" style="padding:30px;">
+    <div class="card">
+        <div class="card-title">
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data" style="align:center; padding:30px; background-color:white;">
+                    {% csrf_token %}
+                    <h6>{{form.as_p}}</h6>
+                    <input type="submit" class="btn btn-primary" name="Submit" align="center" value="Update">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

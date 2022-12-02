@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+            <div class="p-3 shadow card" style="margin-bottom:10px; margin-top:10px;">
+                <div class="card-body"  >
+                    <u><h4 class="card-title">{{task.name}}</h4></u>
+                    <p><b>{{task.desc}}</b></p>
+                    <h6><strong>Priority : {{task.priority}}</h6>
+                    <h6 class="card-date">{{task.date}}</h6><br>
+                    <a class="btn btn-danger" href="{% url 'todoapp:delete' task.id %}" style="width:180px; margin-bottom:5px;">Done</a>
+                    <a class="btn btn-warning" href="{% url 'todoapp:cbvupdate' task.id %}" style="width:180px; margin-bottom:5px;">Update</a>
+                </div>
+            </div>
+    </div>
+{% endblock %}

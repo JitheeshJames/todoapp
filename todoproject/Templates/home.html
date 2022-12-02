@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" style="padding:50px; width:2400px;" >
+    <div class="row" style="background-color:white; padding:20px">
+        <div class="col-md-6" style="padding-top:35px">
+            <form method="post" enctype="multipart/form-data" action="" class="p-3 shadow" id="form-usr">
+                {% csrf_token %}
+                <label for="task" class="form-label">Task Name</label>
+                <input type="text" class="form-control" name="task" id="task"><br>
+                <label for="desc" class="form-label">Task Description</label>
+                <textarea type="text" class="form-control" name="desc" id="desc" form="form-usr"></textarea><br>
+                <label for="priority" class="form-label">Task Priority</label>
+                <input type="text" class="form-control" name="priority" id="priority"><br>
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" name="date" id="date"><br>
+                <input type="submit" class="btn btn-success" style="margin:20px">
+            </form>
+        </div>
+        <div class="col-md-6" >
+            <h4>Task to be completed</h4>
+            {% for i in tasks %}
+            <div class="p-3 shadow card" style="margin-bottom:10px">
+                <div class="card-body">
+                    <u><h4 class="card-title"><a href="{% url 'todoapp:cbvdetail' i.id %}">{{i.name}}</a></h4></u>
+                    <p><b>{{i.desc}}</b></p>
+                    <h6><strong>Priority : {{i.priority}}</h6>
+                    <h6 class="card-date">{{i.date}}</h6><br>
+                    <a class="btn btn-danger" href="{% url 'todoapp:delete' i.id %}" style="width:180px; margin-bottom:5px;">Done</a>
+                    <a class="btn btn-warning" href="{% url 'todoapp:update' i.id %}" style="width:180px; margin-bottom:5px;">Update</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
